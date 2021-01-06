@@ -1,6 +1,13 @@
+// Dependency imports
 const express = require('express');
 
+// Local imports
+const router = require('./routing/router');
+
 const app = express()
+
+// Middleware
+app.use(router)
 
 app.get('/', (req, res) => {
     res.send('Hello World')
