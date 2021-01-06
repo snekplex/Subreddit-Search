@@ -6,4 +6,16 @@ router.get('/health-check', (req, res) => {
     })
 })
 
+/* Search Endpoints */
+
+router.get('/search', (req, res) => {
+    var response = {
+        results: []
+    }
+
+    res.json(response)
+})
+
+
+
 module.exports = router;
