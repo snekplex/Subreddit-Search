@@ -1,32 +1,32 @@
 const pupeteer = require('puppeteer')
 
 // NOTE: Will only currently work with search terms seperated by 1 space
-function formatSearchTerm(searchTerm) {
-    var formattedSearchTerm = searchTerm.trim();
+function formatSearchTerm(searchTerms) {
     
-    if (searchTerm.indexOf(' ') >= 0) {
+    var formattedSearchTerms = searchTerms;
+
+    if (searchTerms.length > 1) {
         // Search term is multiple words and needs to be formatted
         let newSearchTerm = '';
-        const terms = formattedSearchTerm.split(' ')
-        console.log(terms);
-        for (let i=0; i < terms.length-1; i++) {
-            newSearchTerm += terms[i] + '%20'
+    
+        for (let i=0; i < searchTerms.length-1; i++) {
+            newSearchTerm += searchTerms[i] + '%20'
         }
         
-        newSearchTerm += terms[terms.length-1]
-        formattedSearchTerm = newSearchTerm;      
+        newSearchTerm += searchTerms[searchTerms.length-1]
+        formattedSearchTerms = newSearchTerm;      
     } 
 
-    return formattedSearchTerm;
+
+    return formattedSearchTerms;
 }
 
-const scrapePage = async (allowNsfw, searchTerm, subreddits) => {
+const scrapeResults = async (allowNsfw, searchTerms, subreddits) => {
     // allowNsfw: if set to true, will allow the browsing of NSFW subreddits
-    // searchTerm: url safe string for query
+    // searchTerm: arrary of search terms to search for(No Spaces)
     // subreddits: array of subreddits to search the term for
-    searchTerm = searchTerm.trim()
     try {
-        const browser = await pupeteer.launch({ headless: false });
+        const browser = await pupeteer.launch({ headless: true });
         const context = browser.defaultBrowserContext();
 
         context.overridePermissions('https://reddit.com', ['notifications']);
@@ -64,12 +64,13 @@ const scrapePage = async (allowNsfw, searchTerm, subreddits) => {
         }
 
         const searchPage = await browser.newPage();
-        const formattedSearchTerm = formatSearchTerm(searchTerm);
+        const formattedSearchTerms = formatSearchTerm(searchTerms);
+
 
         const searchResults = {}
 
         for (subreddit of subreddits) {
-            let searchResUrl = `https://reddit.com/r/${subreddit}/search?q=${formattedSearchTerm}&restrict_sr=1`;
+            let searchResUrl = `https://reddit.com/r/${subreddit}/search?q=${formattedSearchTerms}&restrict_sr=1`;
             await searchPage.goto(searchResUrl, { waitUntil: 'domcontentloaded' });
             
             // Timeout allows for results to load in. Adjust as necessary
@@ -113,7 +114,7 @@ const scrapePage = async (allowNsfw, searchTerm, subreddits) => {
                         'subreddit': subreddit,
                         // Basic tagging defining a tag as a word(s) seperated by a space
                         // EX: Blue Bird = ['Blue', 'Bird']
-                        'tags': searchTerm.split(' '),
+                        'tags': searchTerms,
                         'postLink': postLinks[i],
                         'postTitle': postTitles[i],
                         'postOutboundLink': postOutboundLinks[i]
@@ -128,6 +129,7 @@ const scrapePage = async (allowNsfw, searchTerm, subreddits) => {
 
         }
 
+
         browser.close();
         return searchResults;
     } catch (err) {
@@ -136,4 +138,4 @@ const scrapePage = async (allowNsfw, searchTerm, subreddits) => {
     }
 }
 
-module.exports = scrapePage;
+module.exports = scrapeResults;
