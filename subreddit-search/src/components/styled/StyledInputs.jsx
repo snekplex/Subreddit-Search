@@ -8,3 +8,10 @@ export const StyledSearchInput = styled.input`
     padding-left: 0.5em;
 
 `
+export const StyledTextArea = styled.textarea`
+    font-family: 'Rubik', sans-seriff;
+    padding: 0.5em;
+    font-size: 1.5em;
+    border: 2px solid;
+    border-radius: 5px;
+`
