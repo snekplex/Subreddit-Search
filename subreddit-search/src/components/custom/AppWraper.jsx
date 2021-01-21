@@ -1,6 +1,10 @@
 import React from 'react';
 import BeatLoader from 'react-spinners/BeatLoader';
-import { StyledBasicWrapper, StyledSearchBoxWrapper } from '../styled/StyledWrappers';
+import { StyledBasicWrapper, 
+         StyledSearchBoxWrapper, 
+         StyledWebsiteTitleWrapper,
+         StyledWebsiteContentWrapper } from '../styled/StyledWrappers';
+import { StyledWebsiteTitle, StyledWebsiteSubtitle } from '../styled/StyledTitles';
 import { StyledSubmitBtn } from '../styled/StyledButtons';
 import { StyledSearchInput, StyledTextArea } from '../styled/StyledInputs';
 
@@ -64,7 +68,15 @@ export default class AppWrapper extends React.Component {
 
     render() {
         return (
-            <div>
+            <StyledWebsiteContentWrapper>
+                <StyledWebsiteTitleWrapper>
+                    <StyledWebsiteTitle>
+                        Subreddit Search
+                    </StyledWebsiteTitle>
+                    <StyledWebsiteSubtitle>
+                        A place to search subreddits simply
+                    </StyledWebsiteSubtitle>
+                </StyledWebsiteTitleWrapper>
                 <StyledSearchBoxWrapper>
                     <StyledSearchInput 
                         placeholder="Enter search term here..."
@@ -89,7 +101,7 @@ export default class AppWrapper extends React.Component {
                         }
                     </div>
                 </StyledSearchBoxWrapper>
-            </div>
+            </StyledWebsiteContentWrapper>
         )
     }
 }
