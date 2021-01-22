@@ -1,14 +1,16 @@
 import React from 'react';
 import BeatLoader from 'react-spinners/BeatLoader';
-import { StyledBasicWrapper, 
-         StyledSearchBoxWrapper, 
+import { StyledSearchBoxWrapper, 
          StyledWebsiteTitleWrapper,
-         StyledWebsiteContentWrapper } from '../styled/StyledWrappers';
+         StyledWebsiteContentWrapper,
+         StyledResultsSectionsWrapper } from '../styled/StyledWrappers';
 import { StyledWebsiteTitle, StyledWebsiteSubtitle } from '../styled/StyledTitles';
 import { StyledSubmitBtn } from '../styled/StyledButtons';
 import { StyledSearchInput, StyledTextArea } from '../styled/StyledInputs';
+import { ResultsSections } from '../custom/SearchResults';
 
 import * as searchService from '../../services/api.searchService';
+
 
 export default class AppWrapper extends React.Component {
 
@@ -100,6 +102,11 @@ export default class AppWrapper extends React.Component {
                             )
                         }
                     </div>
+                    <StyledResultsSectionsWrapper>
+                        <ResultsSections
+                            apiData={this.state.results}
+                        />
+                    </StyledResultsSectionsWrapper>
                 </StyledSearchBoxWrapper>
             </StyledWebsiteContentWrapper>
         )
