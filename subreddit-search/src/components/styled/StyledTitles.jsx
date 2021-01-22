@@ -10,3 +10,7 @@ export const StyledWebsiteTitle = styled.h1`
 export const StyledWebsiteSubtitle = styled.h3`
     font-family: 'Rubik', sans-seriff;
 `;
+
+export const StyledResultSectionTitle = styled.h4`
+    font-family: 'Rubik', sans-seriff;
+`;
