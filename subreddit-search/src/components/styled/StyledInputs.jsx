@@ -6,7 +6,7 @@ export const StyledSearchInput = styled.input`
     border: 2px solid;
     border-radius: 5px;
     padding-left: 0.5em;
-
+    margin: 0.5em 0em;
 `
 export const StyledTextArea = styled.textarea`
     font-family: 'Rubik', sans-seriff;
@@ -14,4 +14,5 @@ export const StyledTextArea = styled.textarea`
     font-size: 1.5em;
     border: 2px solid;
     border-radius: 5px;
+    margin: 0.5em 0em;
 `
