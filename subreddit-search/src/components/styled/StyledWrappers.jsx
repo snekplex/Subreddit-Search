@@ -31,3 +31,19 @@ export const StyledSearchBoxWrapper = styled.div`
     justify-content: center;
     flex-direction: column;
 `;
+
+export const StyledResultsWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+`;
+
+export const StyledResultsSectionsWrapper = styled.div`
+    display: flex;
+    flex-directions: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+`
