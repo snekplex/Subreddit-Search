@@ -10,12 +10,6 @@ export const StyledBasicWrapper = styled.div`
 `;
 
 export const StyledWebsiteContentWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100%
 `;
 
 export const StyledWebsiteTitleWrapper = styled.div`
@@ -36,15 +30,19 @@ export const StyledSearchBoxWrapper = styled.div`
 export const StyledResultsWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+    margin: 0.5em;
+    cursor: pointer;
 `;
 
 export const StyledResultsSectionsWrapper = styled.div`
     display: flex;
     flex-directions: column;
     align-items: center;
-    width: 100%;
-    height: 100%;
-`
+`;
+
+
+export const StyledResultWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 0em 0em 1em 0em;
+`;
