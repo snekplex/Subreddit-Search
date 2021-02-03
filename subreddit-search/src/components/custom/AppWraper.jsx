@@ -1,6 +1,7 @@
 import React from 'react';
 import BeatLoader from 'react-spinners/BeatLoader';
-import { StyledSearchBoxWrapper, 
+import { StyledBasicWrapper,
+         StyledSearchBoxWrapper, 
          StyledWebsiteTitleWrapper,
          StyledWebsiteContentWrapper,
          StyledResultsSectionsWrapper } from '../styled/StyledWrappers';
@@ -94,20 +95,25 @@ export default class AppWrapper extends React.Component {
                     <div>
                         {
                             this.state.loadingResults && (
-                                <BeatLoader
-                                    size={40}
-                                    color={"#000"}
-                                    loading={this.state.loadingResults}
-                                />
+                                <StyledBasicWrapper>
+                                    <StyledWebsiteSubtitle>
+                                        Loading results (May take a bit)
+                                    </StyledWebsiteSubtitle>
+                                    <BeatLoader
+                                        size={40}
+                                        color={"#000"}
+                                        loading={this.state.loadingResults}
+                                    />
+                                </StyledBasicWrapper>
                             )
                         }
                     </div>
-                    <StyledResultsSectionsWrapper>
-                        <ResultsSections
-                            apiData={this.state.results}
-                        />
-                    </StyledResultsSectionsWrapper>
                 </StyledSearchBoxWrapper>
+                <StyledResultsSectionsWrapper>
+                    <ResultsSections
+                        apiData={this.state.results}
+                    />
+                </StyledResultsSectionsWrapper>
             </StyledWebsiteContentWrapper>
         )
     }
