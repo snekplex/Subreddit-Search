@@ -36,7 +36,7 @@ export const StyledResultBody = styled.div`
 
 export const StyledResultFooter = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 10%;
     padding: 1em;
 `;
