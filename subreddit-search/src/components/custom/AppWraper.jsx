@@ -86,7 +86,7 @@ export default class AppWrapper extends React.Component {
                         onChange={(event) => this.onSearchInputChange(event.target.value) }
                     />
                     <StyledTextArea
-                        placeholder="Enter subreddits here seperated by newline"
+                        placeholder="Enter subreddits here seperated by newline..."
                         onChange={(event) => this.onSubrreditSearchChange(event.target.value) } 
                     />
                     <StyledSubmitBtn onClick={() => this.onSearchSubmit()}>
