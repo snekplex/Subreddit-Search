@@ -39,6 +39,7 @@ export const StyledResultFooter = styled.div`
     flex-direction: row;
     height: 10%;
     padding: 1em;
+    font-size: 1em;
 `;
 
 export const StyledResultSubredditLink = styled.a`
