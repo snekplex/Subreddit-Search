@@ -3,7 +3,7 @@ export async function getSearchResults(searchTerms, subreddits) {
     // searchTerms: array of terms to search
     // subreddits: an arrary of subreddits to query for the search terms
 
-    var url = 'http://localhost:3000/api/endpoints/search?'
+    var url = 'http://localhost:3001/api/endpoints/search?'
 
     for (let i=0; i < searchTerms.length; i++) {
         if (i === 0) {
