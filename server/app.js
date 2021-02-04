@@ -15,6 +15,6 @@ app.get('/', (req, res) => {
     res.send('Hello World')
 })
 
-app.listen(3000, () => {
-    console.log('App running on http://localhost:3000')
+app.listen(3001, () => {
+    console.log('App running on http://localhost:3001')
 })
